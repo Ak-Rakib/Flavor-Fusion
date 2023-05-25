@@ -11,16 +11,15 @@ import "./styles.css";
 
 // import required modules
 import { EffectCoverflow, Pagination } from "swiper";
+import SharedTitle from "../../../Components/SharedTitle/SharedTitle";
 
 const Swipe = () => {
   return (
     <div className="mt-20 mb-20">
-        <div className="text-center">
-            <p className="text-[#7FD8BE]">---From 11:00am to 10:00pm---</p>
-            <p className="border-b-4 border-gray-300 mt-2 mb-2 max-w-sm mx-auto"></p>
-            <h1 className="text-3xl">ORDER ONLINE</h1>
-            <p className="border-b-4 border-gray-300 mt-2 mb-2 max-w-sm mx-auto"></p>
-        </div>
+      <SharedTitle
+        subHeading={"---From 11:00am to 10:00pm---"}
+        heading={"ORDER ONLINE"}
+      ></SharedTitle>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

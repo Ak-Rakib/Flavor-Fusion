@@ -2,6 +2,8 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import Swipe from "../Swipe/Swipe";
+import ExtraSection from "../ExtraSection/ExtraSection";
+import PopularMenu from "../PopularMenu/PopularMenu";
 
 const Home = () => {
   return (
@@ -24,6 +26,8 @@ const Home = () => {
         </div>
       </Carousel>
       <Swipe></Swipe>
+      <ExtraSection></ExtraSection>
+      <PopularMenu></PopularMenu>
     </div>
   );
 };
