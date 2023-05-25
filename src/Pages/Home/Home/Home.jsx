@@ -5,6 +5,8 @@ import Swipe from "../Swipe/Swipe";
 import ExtraSection from "../ExtraSection/ExtraSection";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import ContactInfo from "../ContactInfo/ContactInfo";
+import ChefRecommends from "../ChefRecommends/ChefRecommends";
+import CheckItOut from "../CheckItOut/CheckItOut";
 
 const Home = () => {
   return (
@@ -30,6 +32,8 @@ const Home = () => {
       <ExtraSection></ExtraSection>
       <PopularMenu></PopularMenu>
       <ContactInfo></ContactInfo>
+      <ChefRecommends></ChefRecommends>
+      <CheckItOut></CheckItOut>
     </div>
   );
 };
