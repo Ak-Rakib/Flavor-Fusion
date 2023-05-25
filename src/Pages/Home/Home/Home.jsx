@@ -4,6 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import Swipe from "../Swipe/Swipe";
 import ExtraSection from "../ExtraSection/ExtraSection";
 import PopularMenu from "../PopularMenu/PopularMenu";
+import ContactInfo from "../ContactInfo/ContactInfo";
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
       <Swipe></Swipe>
       <ExtraSection></ExtraSection>
       <PopularMenu></PopularMenu>
+      <ContactInfo></ContactInfo>
     </div>
   );
 };
