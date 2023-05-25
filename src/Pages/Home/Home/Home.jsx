@@ -6,13 +6,19 @@ const Home = () => {
   return (
     <Carousel>
       <div>
-        <img src="https://i.ibb.co/xXDLJSt/rice4.jpg" />
+        <img src="https://i.ibb.co/gRHqLJt/Banner3.png" />
       </div>
       <div>
-        <img src="https://i.ibb.co/M22DsvN/rice2.jpg" />
+        <img src="https://i.ibb.co/XZ8Ybx2/Banner5.png" />
       </div>
       <div>
-        <img src="https://i.ibb.co/4j4Whn5/kimchi2.jpg" />
+        <img src="https://i.ibb.co/Mhq6tDb/Banner1.png" />
+      </div>
+      <div>
+        <img src="https://i.ibb.co/PZTDG2s/Banner2.png" />
+      </div>
+      <div>
+        <img src="https://i.ibb.co/0hmxxSW/Banner4.png" />
       </div>
     </Carousel>
   );
