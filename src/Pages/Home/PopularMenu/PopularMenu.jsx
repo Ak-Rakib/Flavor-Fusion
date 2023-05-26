@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from "react";
 import PopularMenuShowing from "./PopularMenuShowing/PopularMenuShowing";
 import SharedTitle from "../../../Components/SharedTitle/SharedTitle";
+import useMenu from "../../../Hooks/Hooks";
 
 const PopularMenu = () => {
-  const [menu, setMenu] = useState([]);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const popularData = data.filter((item) => item.category === "popular");
-        setMenu(popularData);
-      });
-  }, []);
+  const [menu] = useMenu();
+  const popularMenu = menu.filter(item => item.category === "popular");
+
   return (
     <div className="mb-20">
       <SharedTitle
@@ -19,7 +13,7 @@ const PopularMenu = () => {
         heading={"FROM OUR MENU"}
       ></SharedTitle>
       <div className="grid md:grid-cols-2 gap-5">
-        {menu.map((info) => (
+        {popularMenu.map((info) => (
           <PopularMenuShowing key={info._id} info={info}></PopularMenuShowing>
         ))}
       </div>
