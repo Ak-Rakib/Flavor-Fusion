@@ -12,7 +12,7 @@ const ExtraSection = () => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className=" text-center text-neutral-content">
           <div className="">
-            <div className="mb-5 text-black bg-white ">
+            <div className="mb-5 text-black bg-white p-16 opacity-70">
               <h1 className="text-3xl text-[#7FD8BE]">Flavor Fusion</h1>
               <p>
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
