@@ -5,7 +5,7 @@ const CheckItOut = () => {
   return (
     <div className="mb-20">
       <div
-        className="hero min-h-screen"
+        className="hero min-h-screen bg-fixed"
         style={{
           backgroundImage: `url("https://i.ibb.co/Ny4FG99/rice1.jpg")`,
         }}
