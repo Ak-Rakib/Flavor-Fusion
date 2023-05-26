@@ -8,10 +8,14 @@ import ContactInfo from "../ContactInfo/ContactInfo";
 import ChefRecommends from "../ChefRecommends/ChefRecommends";
 import CheckItOut from "../CheckItOut/CheckItOut";
 import OurTestimonial from "../OurTestimonial/OurTestimonial";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Flavor Fusion || Home</title>
+      </Helmet>
       <Carousel>
         <div>
           <img src="https://i.ibb.co/gRHqLJt/Banner3.png" />
