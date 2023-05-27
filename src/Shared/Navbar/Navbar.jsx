@@ -33,6 +33,9 @@ const Navbar = () => {
               <li>
                 <Link to="/menu"><a>Menu</a></Link>
               </li>
+              <li>
+                <Link to="/shop"><a>Shop</a></Link>
+              </li>
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -46,6 +49,9 @@ const Navbar = () => {
             </li>
             <li>
                 <Link to="/menu"><a>Menu</a></Link>
+              </li>
+            <li>
+                <Link to="/shop"><a>Shop</a></Link>
               </li>
           </ul>
         </div>
