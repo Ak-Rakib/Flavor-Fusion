@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
 
 const Login = () => {
+    const captchaRef = useRef(null);
+    const [disable, setDisable] = useState(true);
   const foundLoginData = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -8,12 +15,26 @@ const Login = () => {
     const pass = form.password.value;
     console.log(email, pass);
   };
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
+  const handleValidateCaptcha = () => {
+    let user_captcha_value = captchaRef.current.value;
+    if(validateCaptcha(user_captcha_value)){
+        setDisable(false);
+    } else {
+        setDisable(true);
+    }
+  }
+
   return (
     <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero-content flex-col-reverse lg:flex-row-reverse">
         <form
           onSubmit={foundLoginData}
-          className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+          className="card  w-full max-w-sm shadow-2xl bg-base-100"
         >
           <div className="card-body">
             <div className="form-control">
@@ -22,7 +43,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
                 className="input input-bordered"
               />
@@ -33,7 +54,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 name="password"
                 className="input input-bordered"
               />
@@ -43,8 +64,20 @@ const Login = () => {
                 </a>
               </label>
             </div>
+            <div className="form-control">
+              <LoadCanvasTemplate />
+              <input
+              ref={captchaRef}
+                type="text"
+                placeholder="Enter Your value"
+                name=""
+                className="input input-bordered"
+              />
+              <button onClick={handleValidateCaptcha} className="btn btn-outline btn-xs">Validate</button>
+            </div>
+
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button disabled={disable} className="btn btn-primary">Login</button>
             </div>
           </div>
         </form>
