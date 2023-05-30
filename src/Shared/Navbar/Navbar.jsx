@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div> 
+    <div>
       <div className="navbar bg-base-100 fixed z-20 max-w-6xl">
         <div className="navbar-start">
           <div className="dropdown">
@@ -28,13 +28,24 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link><a>Home</a></Link>
+                <Link>
+                  <a>Home</a>
+                </Link>
               </li>
               <li>
-                <Link to="/menu"><a>Menu</a></Link>
+                <Link to="/menu">
+                  <a>Menu</a>
+                </Link>
               </li>
               <li>
-                <Link to="/shop"><a>Shop</a></Link>
+                <Link to="/shop">
+                  <a>Shop</a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/login">
+                  <a>Login</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -45,13 +56,24 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link><a>Home</a></Link>
+              <Link>
+                <a>Home</a>
+              </Link>
             </li>
             <li>
-                <Link to="/menu"><a>Menu</a></Link>
+              <Link to="/menu">
+                <a>Menu</a>
+              </Link>
+            </li>
+            <li>
+                <Link to="/shop">
+                  <a>Shop</a>
+                </Link>
               </li>
             <li>
-                <Link to="/shop"><a>Shop</a></Link>
+                <Link to="/login">
+                  <a>Login</a>
+                </Link>
               </li>
           </ul>
         </div>

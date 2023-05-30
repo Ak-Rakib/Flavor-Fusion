@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SharedTitle from "../../../Components/SharedTitle/SharedTitle";
 import useMenu from "../../../Hooks/Hooks";
 import SharedMenuItems from "../../../Shared/SharedMenuItems/SharedMenuItems";
@@ -14,9 +15,11 @@ const PopularMenu = () => {
       ></SharedTitle>
       <SharedMenuItems items={popularMenu}></SharedMenuItems>
       <div className="flex justify-center">
+        <Link to="/menu">
         <button className="btn bg-[#7FD8BE] uppercase  mt-10 border-0">
           View Full Menu
         </button>
+        </Link>
       </div>
     </div>
   );
