@@ -1,7 +1,60 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Layout/ContextProvider/ContextProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
+  // eslint-disable-next-line no-unused-vars
+
+  const logOutUser = () => {
+    logOut()
+    .then(error => console.log(error));
+  }
+
+  const listParents = (
+    <>
+      <li>
+        <Link>
+          <a>Home</a>
+        </Link>
+      </li>
+      <li>
+        <Link to="/menu">
+          <a>Menu</a>
+        </Link>
+      </li>
+      <li>
+        <Link to="/shop">
+          <a>Shop</a>
+        </Link>
+      </li>
+      
+
+
+      {
+        user?.email ? <>
+            <li>
+        <Link onClick={logOutUser}>
+          <a>LogOut</a>
+        </Link>
+      </li>
+        </>:
+        <>
+          <li>
+        <Link to="/login">
+          <a>Login</a>
+        </Link>
+      </li>
+      <li>
+        <Link to="/signUp">
+          <a>SignUp</a>
+        </Link>
+      </li>
+        </>
+      }
+    </>
+  );
   return (
     <div>
       <div className="navbar bg-base-100 fixed z-20 max-w-6xl">
@@ -27,26 +80,9 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link>
-                  <a>Home</a>
-                </Link>
-              </li>
-              <li>
-                <Link to="/menu">
-                  <a>Menu</a>
-                </Link>
-              </li>
-              <li>
-                <Link to="/shop">
-                  <a>Shop</a>
-                </Link>
-              </li>
-              <li>
-                <Link to="/login">
-                  <a>Login</a>
-                </Link>
-              </li>
+              {
+                listParents
+              }
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -55,26 +91,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link>
-                <a>Home</a>
-              </Link>
-            </li>
-            <li>
-              <Link to="/menu">
-                <a>Menu</a>
-              </Link>
-            </li>
-            <li>
-                <Link to="/shop">
-                  <a>Shop</a>
-                </Link>
-              </li>
-            <li>
-                <Link to="/login">
-                  <a>Login</a>
-                </Link>
-              </li>
+            {
+              listParents
+            }
           </ul>
         </div>
         <div className="navbar-end">

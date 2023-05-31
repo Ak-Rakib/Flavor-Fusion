@@ -5,8 +5,9 @@ import Footer from '../../Shared/Footer/Footer';
 
 const Main = () => {
     const location = useLocation();
-    // console.log(location);
-    const headerAndFooterDisable = location.pathname.includes('login');
+    const currentLocation = location.pathname;
+    const headerAndFooterDisable = currentLocation.includes('login') || currentLocation.includes('signUp');
+    
     return (
         <div>
             {headerAndFooterDisable || <Navbar></Navbar>}
