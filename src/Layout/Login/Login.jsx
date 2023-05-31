@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -12,6 +12,10 @@ import { AuthContext } from "../ContextProvider/ContextProvider";
 const Login = () => {
   const { logIn } = useContext(AuthContext);
   const [disable, setDisable] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const foundLoginData = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,6 +25,7 @@ const Login = () => {
     logIn(email, pass).then((result) => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
+      navigate(from, { replace: true });
       form.reset();
     });
   };

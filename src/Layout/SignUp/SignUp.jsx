@@ -1,11 +1,13 @@
+/* eslint-disable no-undef */
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../ContextProvider/ContextProvider";
 import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-  const { signUp } = useContext(AuthContext);
+  const { signUp, userUpdate } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,11 +15,14 @@ const SignUp = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data)
-    signUp(data.email, data.password)
+    signUp(data.email, data.password, data.photoURL)
     .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        userUpdate(name, photoURL)
+        .then(() => console.log("User profile updated"))
     });
+    navigate('/login');
 };
 
   return (
@@ -40,6 +45,21 @@ const SignUp = () => {
                 className="input input-bordered"
               />
               {errors.name && (
+                <span className="text-red-600">This field is required</span>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">photoURL</span>
+              </label>
+              <input
+                type="photo"
+                placeholder="photoURL"
+                name="photoURL"
+                {...register("photoURL", { required: true })}
+                className="input input-bordered"
+              />
+              {errors.photoURL && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
