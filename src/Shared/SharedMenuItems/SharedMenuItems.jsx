@@ -15,7 +15,7 @@ const SharedMenuItems = ({ items, title, img, details }) => {
           <PopularMenuShowing key={info._id} info={info}></PopularMenuShowing>
         ))}
       </div>
-      <div className="text-center mt-5">
+      <div className="text-center mt-5 mb-5">
         <Link to={`/shop/${title}`}>
           <button className="btn bg-[#7FD8BE] uppercase border-0">
             order your favorite food

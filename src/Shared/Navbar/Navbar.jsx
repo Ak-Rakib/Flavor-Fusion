@@ -2,15 +2,16 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Layout/ContextProvider/ContextProvider";
+import { FaShoppingCart } from 'react-icons/fa';
+
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   // eslint-disable-next-line no-unused-vars
 
   const logOutUser = () => {
-    logOut()
-    .then(error => console.log(error));
-  }
+    logOut().then((error) => console.log(error));
+  };
 
   const listParents = (
     <>
@@ -25,34 +26,41 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/shop">
+        <Link to="/shop/SALAD">
           <a>Shop</a>
         </Link>
       </li>
-      
 
-
-      {
-        user?.email ? <>
-            <li>
-        <Link onClick={logOutUser}>
-          <a>LogOut</a>
-        </Link>
-      </li>
-        </>:
+      {user?.email ? (
         <>
           <li>
-        <Link to="/login">
-          <a>Login</a>
-        </Link>
-      </li>
-      <li>
-        <Link to="/signUp">
-          <a>SignUp</a>
-        </Link>
-      </li>
+            <Link onClick={logOutUser}>
+              <a>LogOut</a>
+            </Link>
+          </li>
         </>
-      }
+      ) : (
+        <>
+          <li>
+            <Link to="/login">
+              <a>Login</a>
+            </Link>
+          </li>
+          <li>
+            <Link to="/signUp">
+              <a>SignUp</a>
+            </Link>
+          </li>
+        </>
+      )}
+      <li>
+        <Link to="/">
+          <button className="btn">
+            <FaShoppingCart></FaShoppingCart>
+            <div className="badge badge-secondary ms-2">+99</div>
+          </button>
+        </Link>
+      </li>
     </>
   );
   return (
@@ -80,9 +88,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {
-                listParents
-              }
+              {listParents}
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -90,11 +96,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {
-              listParents
-            }
-          </ul>
+          <ul className="menu menu-horizontal px-1">{listParents}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn bg-[#7FD8BE] border-0">Get started</a>
