@@ -1,13 +1,16 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Layout/ContextProvider/ContextProvider";
 import { FaShoppingCart } from 'react-icons/fa';
+import useCart from "../../Hooks/useCart";
 
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // eslint-disable-next-line no-unused-vars
+  const [cart] = useCart();
+  // console.log(cart.length);
 
   const logOutUser = () => {
     logOut().then((error) => console.log(error));
@@ -57,7 +60,7 @@ const Navbar = () => {
         <Link to="/">
           <button className="btn">
             <FaShoppingCart></FaShoppingCart>
-            <div className="badge badge-secondary ms-2">+99</div>
+            <div className="badge badge-secondary ms-2">+{cart.length || 0}</div>
           </button>
         </Link>
       </li>

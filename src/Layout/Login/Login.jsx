@@ -9,6 +9,8 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../ContextProvider/ContextProvider";
 
+
+
 const Login = () => {
   const { logIn } = useContext(AuthContext);
   const [disable, setDisable] = useState(true);
@@ -16,6 +18,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  
   const foundLoginData = (event) => {
     event.preventDefault();
     const form = event.target;
