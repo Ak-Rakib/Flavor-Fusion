@@ -10,7 +10,7 @@ import useCart from "../../Hooks/useCart";
 
 const SharedCard = ({ menu }) => {
   const { user } = useContext(AuthContext);
-  const { image, name, recipe, _id } = menu;
+  const { image, name, recipe, _id, price } = menu;
   const [,refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +19,7 @@ const SharedCard = ({ menu }) => {
   const findMenuData = (menu) => {
     console.log(menu);
     if (user && user?.email) {
-      const menuData = { menuId: _id, image, name, recipe, email: user.email };
+      const menuData = { menuId: _id, image, name, recipe, email: user.email, price };
       fetch("http://localhost:5000/cart", {
         method: "POST",
         headers: {
@@ -65,6 +65,7 @@ const SharedCard = ({ menu }) => {
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name}</h2>
+          <p>${price}</p>
           <p>{recipe}</p>
           <div className="card-actions">
             <button
