@@ -5,22 +5,41 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../ContextProvider/ContextProvider";
 import { useForm } from "react-hook-form";
 
+
+
+
 const SignUp = () => {
+
   const { signUp, userUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+
   const onSubmit = (data) => {
-    console.log(data)
+
     signUp(data.email, data.password, data.photoURL)
     .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
-        userUpdate(name, photoURL)
-        .then(() => console.log("User profile updated"))
+        userUpdate(data.name, data.photoURL)
+        .then(() => {
+          const usersData = {name: data.name, email: data.email}
+          fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(usersData)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+          })
+        })
     });
     navigate('/login');
 };
